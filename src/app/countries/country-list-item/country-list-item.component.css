@@ -1,0 +1,25 @@
+:host {
+    cursor: pointer;
+}
+
+img {
+    width: 40px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+img:hover {
+    transition: 400ms ease-out;
+    transform: scale(1.2);
+}
+
+.jo-country-cell {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    padding: 10px 10px;
+}
+
+
+
+

@@ -1,0 +1,19 @@
+.jo-country-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.jo-country-item {
+    width: 240px;
+    margin: 10px 10px;
+}
+
+.jo-country-item:nth-of-type(even) {
+    background-color: #eeeeee;
+}
+
+.jo-country-item:hover {
+    transition: 400ms ease-out;
+    transform: scale(1.1);
+}

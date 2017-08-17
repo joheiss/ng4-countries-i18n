@@ -1,0 +1,12 @@
+<jo-countries-search
+  [searchCriteria]="searchCriteria"
+  (search)="onSearch($event)">
+</jo-countries-search>
+<jo-country-list [countries]="countries$"
+                 [count]="count$"
+                 (selected)="onSelected($event)">
+</jo-country-list>
+
+
+
+

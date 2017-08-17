@@ -1,0 +1,19 @@
+<div class="jo-zippy">
+    <div class="jo-zippy-heading"
+         [ngClass]="{
+        'expanded': isExpanded
+        }"
+         (click)="onToggle()">
+        {{ title }}
+        <span class="fa"
+              [ngClass]="{
+          'fa-chevron-down': !isExpanded,
+          'fa-chevron-up': isExpanded
+          }"
+        >
+    </span>
+    </div>
+    <div *ngIf="isExpanded" class="jo-zippy-body">
+        <ng-content></ng-content>
+    </div>
+</div>

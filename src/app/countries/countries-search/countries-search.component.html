@@ -1,0 +1,48 @@
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+  <input type="text"
+         (input)="onInput($event.target.value)"
+         value="{{searchCriteria.term}}"
+         class="form-control"
+         i18n-placeholder placeholder="Search"
+         aria-describedby="basic-addon1">
+</div>
+
+<div class="btn-group jo-flx-row"> <!-- data-toggle="buttons" -->
+  <label class="btn btn-secondary" [class.active]="searchCriteria.africa"
+         (click)="onToggle(africa)">
+    <input type="checkbox" [checked]="searchCriteria.africa" id="africa" #africa>
+    <span i18n>Africa</span>
+  </label>
+  <label class="btn btn-secondary" [class.active]="searchCriteria.antarctica"
+         (click)="onToggle(antarctica)">
+    <input type="checkbox" [checked]="searchCriteria.antarctica" id="antarctica" #antarctica>
+    <span i18n>Antarctica</span>
+  </label>
+  <label class="btn btn-secondary" [class.active]="searchCriteria.asia"
+         (click)="onToggle(asia)">
+    <input type="checkbox" [checked]="searchCriteria.asia" id="asia" #asia>
+    <span i18n>Asia</span>
+  </label>
+  <label class="btn btn-secondary" [class.active]="searchCriteria.australia"
+         (click)="onToggle(australia)">
+    <input type="checkbox" [checked]="searchCriteria.australia" id="australia" #australia>
+    <span i18n>Australia</span>
+  </label>
+  <label class="btn btn-secondary" [class.active]="searchCriteria.america"
+         (click)="onToggle(america)">
+    <input type="checkbox" [checked]="searchCriteria.america" id="america" #america>
+    <span i18n>America</span>
+  </label >
+  <label class="btn btn-secondary" [class.active]="searchCriteria.europe"
+         (click)="onToggle(europe)">
+    <input type="checkbox" [checked]="searchCriteria.europe" id="europe" #europe>
+    <span i18n>Europe</span>
+  </label>
+  <label class="btn btn-secondary" [class.active]="searchCriteria.none"
+         (click)="onToggle(none)">
+    <input type="checkbox" [checked]="searchCriteria.none" id="none" #none>
+    <span i18n>None</span>
+  </label>
+</div>
+

@@ -1,0 +1,171 @@
+<section class="jo-flx-row jo-det-hdr">
+  <div>
+    <h4>{{country?.name}} ({{country?.alpha3Code}})</h4>
+  </div>
+  <div>
+    <img [src]="country?.flag">
+  </div>
+</section>
+
+<section class="jo-flx-row jo-det-bdy">
+  <div *ngIf="country?.alpha2Code" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">ISC Code</div>
+    <div>{{country?.alpha2Code}}</div>
+  </div>
+  <div *ngIf="country?.numericCode" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Numeric Code</div>
+    <div>{{country?.numericCode}}</div>
+  </div>
+  <div *ngIf="country?.region" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Region</div>
+    <div>{{country?.region}}</div>
+  </div>
+  <div *ngIf="country?.subregion" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Sub Region</div>
+    <div>{{country?.subregion}}</div>
+  </div>
+  <div *ngIf="country?.regionalBlocs && country?.regionalBlocs.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Regional Block</div>
+    <div>{{country?.regionalBlocs[0].name}} ({{country?.regionalBlocs[0].acronym}})</div>
+  </div>
+  <div *ngIf="country?.regionalBlocs && country?.regionalBlocs.length > 1" class="jo-det-blk">
+    <jo-zippy [title]="'Regional Blocks'" class=" jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let block of country?.regionalBlocs" class="list-group-item">
+          {{block.acronym}} {{block.name}}
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+  <div *ngIf="country?.capital" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Capital City</div>
+    <div>{{country?.capital}}</div>
+  </div>
+  <div *ngIf="country?.latlng[0]" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Latitude</div>
+    <div>{{country?.latlng[0]}}</div>
+  </div>
+  <div *ngIf="country?.latlng[1]" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Longitude</div>
+    <div>{{country?.latlng[0]}}</div>
+  </div>
+  <div *ngIf="country?.area" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Land Area</div>
+    <div>{{country?.area | number}}</div>
+  </div>
+  <div *ngIf="country?.timezones && country?.timezones.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Timezone</div>
+    <div>{{country?.timezones[0]}}</div>
+  </div>
+  <div *ngIf="country?.timezones && country?.timezones.length > 1" class="jo-det-blk">
+    <jo-zippy  [title]="'Timezones'" class="jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let timezone of country?.timezones" class="list-group-item">
+          {{timezone}}
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+  <div *ngIf="country?.population" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Population</div>
+    <div>{{country?.population | number}}</div>
+  </div>
+  <div *ngIf="country?.gini" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Gini Index</div>
+    <div>{{country?.gini | number}}</div>
+  </div>
+  <div *ngIf="country?.callingCodes" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Calling Codes</div>
+    <div>{{country?.callingCodes}}</div>
+  </div>
+  <div *ngIf="country?.topLevelDomain" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Top Level Domain</div>
+    <div>{{country?.topLevelDomain}}</div>
+  </div>
+  <div *ngIf="country?.borders && country?.borders.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Border</div>
+    <div>{{country?.borders[0]['name']}}</div>
+  </div>
+  <div *ngIf="country?.borders && country?.borders.length > 1" class="jo-det-blk">
+    <jo-zippy  [title]="'Borders'" class=" jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let border of country?.borders" class="list-group-item">
+          <a (click)="onNavigateToCountry(border['code'])"> {{border['name'] || border['code']}}</a>
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+  <div *ngIf="country?.currencies && country?.currencies.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Currency</div>
+    <div>{{country?.currencies[0].name}} ({{country?.currencies[0].code}}/{{country?.currencies[0].symbol}})</div>
+  </div>
+  <div *ngIf="country?.currencies && country?.currencies.length > 1" class="jo-det-blk">
+    <jo-zippy [title]="'Currencies'"  class=" jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let currency of country?.currencies" class="list-group-item">
+          {{currency.name}} ({{currency.code}}/{{currency.symbol}})
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+  <div *ngIf="country?.nativeName" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Native Name</div>
+    <div>{{country?.nativeName}}</div>
+  </div>
+  <div *ngIf="translations && translations?.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Translation</div>
+    <div>{{translations[0]?.name}} ({{translations[0]?.language}})</div>
+  </div>
+  <div  *ngIf="translations && translations?.length > 1" class="jo-det-blk">
+    <jo-zippy [title]="'Translations'" class="jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let translation of translations" class="list-group-item">
+          {{translation.name}} ({{translation.language}})
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+  <div *ngIf="country?.altSpellings && country?.altSpellings.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Alt. Spelling</div>
+    <div>{{country?.altSpellings[0]}}</div>
+  </div>
+  <div *ngIf="country?.altSpellings && country?.altSpellings.length > 1" class="jo-det-blk">
+    <jo-zippy [title]="'Alt. Spellings'" class="jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let spelling of country?.altSpellings" class="list-group-item">
+          {{spelling}}
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+  <div *ngIf="country?.demonym" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Denonym</div>
+    <div>{{country?.demonym}}</div>
+  </div>
+  <div *ngIf="country?.languages && country?.languages.length === 1" class="jo-flx-row jo-det-blk">
+    <div i18n class="jo-det-lbl">Language</div>
+    <div>{{country?.languages[0].name}}</div>
+  </div>
+  <div *ngIf="country?.languages && country?.languages.length > 1" class="jo-det-blk">
+    <jo-zippy [title]="'Languages'" class="jo-det-zip">
+      <ul class="list-group">
+        <li *ngFor="let language of country?.languages" class="list-group-item">
+          {{language.name}}
+        </li>
+      </ul>
+    </jo-zippy>
+  </div>
+</section>
+<section>
+  <a href="https://www.google.com/maps/place/{{country.latlng[0]}},{{country.latlng[1]}}/@{{country.latlng[0]}},{{country.latlng[1]}},6z"
+     target="_blank"
+     class="btn btn-lg btn-block btn-secondary">
+    <span i18n>Open Google Maps</span>
+  </a>
+  <a href="https://{{language}}.wikipedia.org/wiki/{{country.name}}"
+     target="_blank"
+     class="btn btn-lg btn-block btn-secondary">
+    <span i18n>Open Wikipedia</span>
+  </a>
+  <a (click)="onBack()" class="btn btn-lg btn-block btn-primary"><span i18n>Back</span></a>
+</section>
